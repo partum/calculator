@@ -13,14 +13,23 @@ const buttons = [
   { id: "7", name: "7" },
   { id: "8", name: "8" },
   { id: "9", name: "9" },
+  { id: "10", name: "÷" },
+  { id: "11", name: "x" },
+  { id: "12", name: "-" },
+  { id: "13", name: "+" },
+  { id: "14", name: "=" },
+  { id: "15", name: "c" },
+  { id: "16", name: "." },
 ];
 function App({ buttons }) {
   const [number, setNumber] = useState("");
 
   return (
     <>
-      <div>
-        <h1>{number}</h1>
+      <div id="case">
+        <div id="screen">
+          <h1>{number}</h1>
+        </div>
         {buttons.map((button) => (
           <button key={button.id} onClick={() => setNumber(button.name)}>
             {button.name}
