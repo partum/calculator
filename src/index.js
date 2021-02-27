@@ -3,23 +3,23 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 const buttons = [
-  { id: "0", name: "0" },
-  { id: "1", name: "1" },
-  { id: "2", name: "2" },
-  { id: "3", name: "3" },
-  { id: "4", name: "4" },
-  { id: "5", name: "5" },
-  { id: "6", name: "6" },
-  { id: "7", name: "7" },
-  { id: "8", name: "8" },
-  { id: "9", name: "9" },
-  { id: "10", name: "÷" },
-  { id: "11", name: "x" },
-  { id: "12", name: "-" },
-  { id: "13", name: "+" },
-  { id: "14", name: "=" },
-  { id: "15", name: "c" },
-  { id: "16", name: "." },
+  { id: "15", name: "c", selector: "clear" },
+  { id: "10", name: "÷", selector: "divide" },
+  { id: "11", name: "x", selector: "multiply" },
+  { id: "12", name: "-", selector: "subtract" },
+  { id: "7", name: "7", selector: "seven" },
+  { id: "8", name: "8", selector: "eight" },
+  { id: "9", name: "9", selector: "nine" },
+  { id: "13", name: "+", selector: "add" },
+  { id: "4", name: "4", selector: "four" },
+  { id: "5", name: "5", selector: "five" },
+  { id: "6", name: "6", selector: "six" },
+  { id: "1", name: "1", selector: "one" },
+  { id: "2", name: "2", selector: "two" },
+  { id: "3", name: "3", selector: "three" },
+  { id: "14", name: "=", selector: "equal" },
+  { id: "0", name: "0", selector: "zero" },
+  { id: "16", name: ".", selector: "point" },
 ];
 function App({ buttons }) {
   const [number, setNumber] = useState("");
@@ -30,11 +30,17 @@ function App({ buttons }) {
         <div id="screen">
           <h1>{number}</h1>
         </div>
-        {buttons.map((button) => (
-          <button key={button.id} onClick={() => setNumber(button.name)}>
-            {button.name}
-          </button>
-        ))}
+        <div id="button-container">
+          {buttons.map((button) => (
+            <button
+              key={button.id}
+              id={button.selector}
+              onClick={() => setNumber(button.name)}
+            >
+              {button.name}
+            </button>
+          ))}
+        </div>
       </div>
     </>
   );

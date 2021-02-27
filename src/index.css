@@ -23,6 +23,9 @@ button {
 
 h1 {
   color: #002400;
+  text-align: right;
+  margin: 0;
+  font-size: 50px;
 }
 
 #case {
@@ -37,4 +40,23 @@ h1 {
   height: 100px;
   border-radius: 10px;
   background-color: #e2e8ce;
+  padding: 15px;
+}
+
+#button-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
+}
+
+#add {
+  grid-area: 2/4/4/5;
+}
+
+#equal {
+  grid-area: 4/4/6/5;
+}
+
+#zero {
+  grid-area: 5/1/6/3;
 }
