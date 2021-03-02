@@ -47,6 +47,8 @@ h1 {
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: auto auto auto auto auto;
+  height: 640px;
+  padding: 30px 0;
 }
 
 #add {
@@ -59,4 +61,8 @@ h1 {
 
 #zero {
   grid-area: 5/1/6/3;
+}
+
+p {
+  display: inline;
 }

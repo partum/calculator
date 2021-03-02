@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
@@ -21,8 +21,15 @@ const buttons = [
   { id: "0", name: "0", selector: "zero" },
   { id: "16", name: ".", selector: "point" },
 ];
+
 function App({ buttons }) {
-  const [number, setNumber] = useState("");
+  const [number, setNumber] = useState("0");
+  let total = 0;
+
+  useEffect(() => {
+    total = { number }.number;
+    console.log(total);
+  });
 
   return (
     <>
@@ -35,13 +42,17 @@ function App({ buttons }) {
             <button
               key={button.id}
               id={button.selector}
-              onClick={() => setNumber(button.name)}
+              onClick={() => setNumber(number + button.name)}
             >
               {button.name}
             </button>
           ))}
         </div>
       </div>
+      <p>
+        View this code on{" "}
+        <a href="https://github.com/partum/calculator">GitHub</a>
+      </p>
     </>
   );
 }
