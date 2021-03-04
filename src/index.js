@@ -22,33 +22,47 @@ const buttons = [
   { id: "16", name: ".", selector: "point" },
 ];
 
+function MakeButtons() {
+  const [number, setNumber] = useState("");
+  return (
+    <div id="case">
+      <div id="screen">
+        <h1>{number}</h1>
+      </div>
+      <div id="button-container">
+        {buttons.map((button) => (
+          <button
+            key={button.id}
+            id={button.selector}
+            onClick={() => {
+              if (button.id <= 9) {
+                return setNumber(number + button.name);
+              } else {
+                return setNumber("");
+              }
+            }} //maybe add stuff here?
+            //onClick={buttonPress(button, number, setNumber)}
+          >
+            {button.name}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function App({ buttons }) {
-  const [number, setNumber] = useState("0");
   let total = 0;
 
-  useEffect(() => {
-    total = { number }.number;
-    console.log(total);
-  });
+  // useEffect(() => {
+  //   total = { number }.number;
+  //   console.log(total);
+  // });
 
   return (
     <>
-      <div id="case">
-        <div id="screen">
-          <h1>{number}</h1>
-        </div>
-        <div id="button-container">
-          {buttons.map((button) => (
-            <button
-              key={button.id}
-              id={button.selector}
-              onClick={() => setNumber(number + button.name)}
-            >
-              {button.name}
-            </button>
-          ))}
-        </div>
-      </div>
+      <MakeButtons />
+
       <p>
         View this code on{" "}
         <a href="https://github.com/partum/calculator">GitHub</a>
