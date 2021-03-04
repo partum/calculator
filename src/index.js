@@ -22,8 +22,26 @@ const buttons = [
   { id: "16", name: ".", selector: "point" },
 ];
 
+function DoMath(num1, num2, op) {
+  if (op == "+") {
+    //console.log(num1 + num2);
+    return num1 + num2;
+  } else if (op == "-") {
+    return num1 - num2;
+  } else if (op == "÷") {
+    return num1 / num2;
+  } else if (op == "x") {
+    return num1 * num2;
+  }
+}
+
 function MakeButtons() {
   const [number, setNumber] = useState("");
+  const [tempValue, setTempValue] = useState(null);
+  const [operator, setOperator] = useState(null);
+  useEffect(() => {
+    console.log(operator);
+  }); //use this because setX doesn't update imedietly.
   return (
     <div id="case">
       <div id="screen">
@@ -35,13 +53,36 @@ function MakeButtons() {
             key={button.id}
             id={button.selector}
             onClick={() => {
-              if (button.id <= 9) {
+              if (button.id <= 9 || button.id == 16) {
                 return setNumber(number + button.name);
               } else {
+                if (tempValue == null) {
+                  setOperator(button.name);
+                  console.log("The operator should be " + operator);
+                  setTempValue(parseInt(number, 10));
+                } else if (button.id == 14) {
+                  console.log("The first value is " + tempValue);
+                  console.log("The second value is " + number);
+                  console.log("The operator is " + operator);
+                  console.log(
+                    "The answer is " +
+                      DoMath(tempValue, parseInt(number, 10), operator)
+                  );
+                  setTempValue(
+                    DoMath(tempValue, parseInt(number, 10), operator)
+                  );
+                } else {
+                  console.log("The first value is " + tempValue);
+                  console.log("The second value is " + number);
+                  console.log("The operator is " + button.name);
+                  console.log(
+                    "The answer is " +
+                      DoMath(tempValue, parseInt(number, 10), button.name)
+                  );
+                }
                 return setNumber("");
               }
-            }} //maybe add stuff here?
-            //onClick={buttonPress(button, number, setNumber)}
+            }}
           >
             {button.name}
           </button>
@@ -51,14 +92,7 @@ function MakeButtons() {
   );
 }
 
-function App({ buttons }) {
-  let total = 0;
-
-  // useEffect(() => {
-  //   total = { number }.number;
-  //   console.log(total);
-  // });
-
+function App() {
   return (
     <>
       <MakeButtons />
