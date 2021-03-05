@@ -24,7 +24,6 @@ const buttons = [
 
 function DoMath(num1, num2, op) {
   if (op == "+") {
-    //console.log(num1 + num2);
     return num1 + num2;
   } else if (op == "-") {
     return num1 - num2;
@@ -40,7 +39,7 @@ function MakeButtons() {
   const [tempValue, setTempValue] = useState(null);
   const [operator, setOperator] = useState(null);
   useEffect(() => {
-    console.log(operator);
+    console.log(number);
   }); //use this because setX doesn't update imedietly.
   return (
     <div id="case">
@@ -58,27 +57,18 @@ function MakeButtons() {
               } else {
                 if (tempValue == null) {
                   setOperator(button.name);
-                  console.log("The operator should be " + operator);
-                  setTempValue(parseInt(number, 10));
+                  setTempValue(parseFloat(number, 10));
                 } else if (button.id == 14) {
-                  console.log("The first value is " + tempValue);
-                  console.log("The second value is " + number);
-                  console.log("The operator is " + operator);
+                  console.log("= pressed");
                   console.log(
-                    "The answer is " +
-                      DoMath(tempValue, parseInt(number, 10), operator)
+                    "the answer should be " +
+                      DoMath(tempValue, parseFloat(number, 10), operator)
                   );
-                  setTempValue(
-                    DoMath(tempValue, parseInt(number, 10), operator)
+                  return setNumber(
+                    DoMath(tempValue, parseFloat(number, 10), operator)
                   );
-                } else {
-                  console.log("The first value is " + tempValue);
-                  console.log("The second value is " + number);
-                  console.log("The operator is " + button.name);
-                  console.log(
-                    "The answer is " +
-                      DoMath(tempValue, parseInt(number, 10), button.name)
-                  );
+                } else if (button.id == 15) {
+                  return setNumber(""), setTempValue(null), setOperator(null);
                 }
                 return setNumber("");
               }
