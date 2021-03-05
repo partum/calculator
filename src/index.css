@@ -66,3 +66,18 @@ h1 {
 p {
   display: inline;
 }
+
+button {
+  /* margin: 100px 0; */
+  color: #002400;
+  font-size: 100px;
+  background-color: #acbfa4;
+  border: solid 2px;
+
+  /* filter: drop-shadow(15px 10px 4px #879c7e) drop-shadow(-10px -5px 2px #c6d3c0); */
+}
+
+#clear {
+  color: #ff7f11;
+  border: solid 2px #002400;
+}
