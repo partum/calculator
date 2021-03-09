@@ -86,7 +86,13 @@ function MakeButtons() {
                     DoMath(tempValue, parseFloat(number, 10), operator)
                   );
                 } else if (button.id == 15) {
-                  return setNumber(""), setTempValue(null), setOperator(null);
+                  //if the clear button is pressed
+                  return (
+                    setNumber(""),
+                    setTempValue(null),
+                    setOperator(null),
+                    setProgress(null)
+                  );
                 } else if (button.id >= 10 && button.id <= 13) {
                   setOperator(button.name);
                 }
